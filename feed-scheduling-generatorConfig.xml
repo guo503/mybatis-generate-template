@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
+	<!--<classPathEntry location="D:\project\test\muyuan-template\mysql-connector-java-5.1.46.jar"/>-->
+	<classPathEntry location="mysql-connector-java-5.1.46.jar"/>
+
+	
+    <context id="Mysql" targetRuntime="MyBatis3">
+	    
+		<!-- 注释用-->
+		<property name="author" value="guos"/>
+		
+        <property name="javaFileEncoding" value="UTF-8"/>		
+		
+		    <!--基础服务项目路径前缀-->
+        <property name="core_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-feed-scheduling"/>
+		
+			<!--基础服务包路径前缀-->
+        <property name="core_package_prefix" value="com.muyuan.platform.feed.scheduling"/>
+		
+	    <!--api项目路径前缀-->
+        <property name="api_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-feed-scheduling"/>
+		
+	    <!--api包路径前缀-->
+        <property name="api_package_prefix" value="com.muyuan.platform.feed.scheduling"/>
+		
+		
+		 <!-- 配置pojo的序列化 -->
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+		  <!-- 去掉get,set方法，添加Lombok注解-->
+		 <plugin type="org.mybatis.generator.plugins.LombokPlugin" >
+            <property name="hasLombok" value="true"/>
+        </plugin>
+
+		
+		
+		
+		  <!-- 
+			   ExtendModelPlugin插件(生成vo,cond,mapper配置)
+				2.voProject：	         vo所在模块
+				3.voPack：	             vo类所在包
+				4.voSuffix：	         vo类后缀
+				6.generatorPo:           是否重新生成po：     不写或者空或者false,不生成
+				7.generatorMapper:       是否重新生成Mapper:  不写或者空或者false,不生成
+				8.generatorXml:          是否重新生成Xml：    不写或者空或者false,不生成
+				9.mapper:                mapper继承的基类
+			    9.softDeleteMapper:      mapper继承的逻辑删除基类
+				10.table:                po类表注释
+		        11.id:                   主键注解
+				12.version:              乐观锁注解
+				13.condition:            Condition查询类
+				14.limitCondition:       limitCondition查询类
+				15.logicDelete           逻辑删除注解
+				
+		-->
+		<plugin type="org.mybatis.generator.plugins.ExtendModelPlugin">
+						
+			<path name="voProject" value="src\main\java" type="api"/>
+	
+			<pack name="voPack" value="vo" type="api"/>
+
+			<prop name="voSuffix" value="VO" enable="true"/>
+			
+			
+			<prop name="generatorPo" value="true"/>
+			
+			<prop name="generatorMapper" value="true"/>
+			
+			<prop name="generatorXml" value="true"/>
+			
+			
+			<prop name="mapper" value="com.muyuan.platform.common.ext.mybatis.additional.MyBaseMapper"/>
+							
+		    <prop name="table" value="javax.persistence.Table"/>
+			
+			<prop name="id" value="javax.persistence.Id"/>
+			
+			<prop name="column" value="javax.persistence.Column"/>
+			
+			<prop name="appCode" value="com.muyuan.platform.common.constant.CommonConstants.APP_CODE_FEED_SCHEDULING" />
+			
+		    <prop name="fieldName" value="" />
+			
+		</plugin>
+		
+		
+		
+		 <!-- 
+			servcie生成插件
+				1.serviceProject：       接口所在模块
+				2.servicePack：	         接口所在包
+				3.remote：	             remote注解所在包
+				4.applicationName：	     Application类所在包
+				5.serviceImplProject：	 实现类所在模块
+				6.serviceImplPack：	     实现类所在包
+				16.mapByIds:	         生成mapByIds方法
+				17.map:	                 生成map方法
+				18.listId:	             生成listId方法
+				19.saveAndReturnId:	     生成插入返回id方法
+		-->
+		<plugin type="org.mybatis.generator.plugins.ServicePlugin">
+		
+			<prop name="enableAnnotation" value="true"/>
+			
+			<path name="serviceImplProject" value="src\main\java" type="core"/>
+			
+			<prop name="serviceSuffix" value="Biz" enable="true"/>
+			
+			<pack name="serviceImplPack" value="biz" type="core"/>
+
+	        <prop name="enableLogger" value="false"/>
+	
+		</plugin>
+		
+		
+		
+		
+		
+		
+		<!-- 
+			controller生成插件
+				1.controllerProject：           controller所在模块
+				2.controllerPack：	            controller所在包
+				3.controllerSuffix：	        controller类后缀
+				4.responseMethod	            Result类方法
+				5.baseController:	            要继承的基础controller
+				6.enableLogger                  是否生成logger日志
+		--> 
+		<plugin type="org.mybatis.generator.plugins.ControllerPlugin">
+		
+			<prop name="enableAnnotation" value="true"/>
+		
+			<path name="controllerProject" value="src\main\java" type="api"/>
+	
+			<pack name="controllerPack" value="rest" type="api"/>
+
+			<prop name="controllerSuffix" value="Controller"/>
+			
+			<prop name="baseController" value="com.muyuan.platform.common.rest.BaseController"/>
+			
+			<prop name="enableLogger" value="false"/>
+			
+		</plugin>
+		
+		
+		
+        <commentGenerator type="org.mybatis.generator.MyCommentGenerator">
+            <property name="suppressDate" value="true"/>
+			
+            <!-- 是否去除自动生成的注释 true：是 ： false:否 -->
+            <property name="suppressAllComments" value="false"/>
+			
+			<!-- 自定义注释 -->
+			<property name="addRemarkComments" value="true" />
+					
+        </commentGenerator>
+        <!--数据库链接URL，用户名、密码 -->
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.106.11.37:3306/my_feed_scheduling?characterEncoding=utf8&amp;useInformationSchema=true&amp;useSSL=false" userId="root"
+                        password="111111">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 生成模型的包名和位置-->
+        <javaModelGenerator targetPackage="entity" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+        <!-- 生成映射文件的包名和位置-->
+        <sqlMapGenerator targetPackage="mapper" targetProject="src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+        <!-- 生成DAO的包名和位置-->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="mapper" targetProject="src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+     
+	 
+		<table tableName="my_base_medicine_station" domainObjectName="" enableService="true" enableController="true"/>
+    </context>
+</generatorConfiguration>
