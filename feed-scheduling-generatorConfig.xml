@@ -163,11 +163,11 @@
         </javaClientGenerator>
      
 	 
-		<table tableName="my_base_medicine_station" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_station" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="true" enableController="true"/>
 		
     </context>
 </generatorConfiguration>
