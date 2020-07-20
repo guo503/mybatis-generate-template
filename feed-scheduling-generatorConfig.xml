@@ -4,9 +4,8 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
-	<!--<classPathEntry location="D:\project\test\muyuan-template\mysql-connector-java-5.1.46.jar"/>-->
-	<classPathEntry location="mysql-connector-java-5.1.46.jar"/>
-
+	<!--<classPathEntry location="D:\project\muyuan\mybatis-generate-template\mysql-connector-java-5.1.46.jar"/>-->
+	<classPathEntry location="mysql-connector-java-5.1.46.jar
 	
     <context id="Mysql" targetRuntime="MyBatis3">
 	    
@@ -46,14 +45,6 @@
 				6.generatorPo:           是否重新生成po：     不写或者空或者false,不生成
 				7.generatorMapper:       是否重新生成Mapper:  不写或者空或者false,不生成
 				8.generatorXml:          是否重新生成Xml：    不写或者空或者false,不生成
-				9.mapper:                mapper继承的基类
-			    9.softDeleteMapper:      mapper继承的逻辑删除基类
-				10.table:                po类表注释
-		        11.id:                   主键注解
-				12.version:              乐观锁注解
-				13.condition:            Condition查询类
-				14.limitCondition:       limitCondition查询类
-				15.logicDelete           逻辑删除注解
 				
 		-->
 		<plugin type="org.mybatis.generator.plugins.ExtendModelPlugin">
@@ -62,14 +53,14 @@
 	
 			<pack name="voPack" value="vo" type="api"/>
 
-			<prop name="voSuffix" value="VO" enable="true"/>
+			<prop name="voSuffix" value="VO" enable="false"/>
 			
 			
 			<prop name="generatorPo" value="true"/>
 			
-			<prop name="generatorMapper" value="true"/>
+			<prop name="generatorMapper" value="false"/>
 			
-			<prop name="generatorXml" value="true"/>
+			<prop name="generatorXml" value="false"/>
 			
 			
 			<prop name="mapper" value="com.muyuan.platform.common.ext.mybatis.additional.MyBaseMapper"/>
@@ -80,9 +71,11 @@
 			
 			<prop name="column" value="javax.persistence.Column"/>
 			
+			<prop name="authentication" value="com.muyuan.platform.common.annotation.Authentication" />
+			
 			<prop name="appCode" value="com.muyuan.platform.common.constant.CommonConstants.APP_CODE_FEED_SCHEDULING" />
 			
-		    <prop name="fieldName" value="" />
+		    <prop name="fieldName" value="fieldId" />
 			
 		</plugin>
 		
@@ -90,16 +83,8 @@
 		
 		 <!-- 
 			servcie生成插件
-				1.serviceProject：       接口所在模块
-				2.servicePack：	         接口所在包
-				3.remote：	             remote注解所在包
-				4.applicationName：	     Application类所在包
 				5.serviceImplProject：	 实现类所在模块
 				6.serviceImplPack：	     实现类所在包
-				16.mapByIds:	         生成mapByIds方法
-				17.map:	                 生成map方法
-				18.listId:	             生成listId方法
-				19.saveAndReturnId:	     生成插入返回id方法
 		-->
 		<plugin type="org.mybatis.generator.plugins.ServicePlugin">
 		
@@ -125,7 +110,6 @@
 				1.controllerProject：           controller所在模块
 				2.controllerPack：	            controller所在包
 				3.controllerSuffix：	        controller类后缀
-				4.responseMethod	            Result类方法
 				5.baseController:	            要继承的基础controller
 				6.enableLogger                  是否生成logger日志
 		--> 
@@ -179,6 +163,11 @@
         </javaClientGenerator>
      
 	 
-		<table tableName="my_base_medicine_station" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_station" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="false" enableController="false"/>
+		
     </context>
 </generatorConfiguration>
