@@ -45,6 +45,7 @@
 				6.generatorPo:           是否重新生成po：     不写或者空或者false,不生成
 				7.generatorMapper:       是否重新生成Mapper:  不写或者空或者false,不生成
 				8.generatorXml:          是否重新生成Xml：    不写或者空或者false,不生成
+				9.属性status： 自定义类型
 				
 		-->
 		<plugin type="org.mybatis.generator.plugins.ExtendModelPlugin">
@@ -76,6 +77,8 @@
 			<prop name="appCode" value="com.muyuan.platform.common.constant.CommonConstants.APP_CODE_FEED_SCHEDULING" />
 			
 		    <prop name="fieldName" value="fieldId" />
+			
+			<prop name="statusType" value="com.muyuan.platform.common.enums.RecordStatus" />
 			
 		</plugin>
 		
@@ -163,11 +166,11 @@
         </javaClientGenerator>
      
 	 
-		<table tableName="my_base_medicine_station" domainObjectName="" enableService="true" enableController="true"/>
-		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="true" enableController="true"/>
-		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="true" enableController="true"/>
-		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="true" enableController="true"/>
-		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="my_base_medicine_station" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="false" enableController="false"/>
 		
     </context>
 </generatorConfiguration>
