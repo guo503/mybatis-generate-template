@@ -34,6 +34,14 @@
             <property name="hasLombok" value="true"/>
         </plugin>
 
+
+
+         <plugin type="org.mybatis.generator.plugins.BaseMethodPlugin">		
+			<prop name="insertSelective" value="add" enable="true"/>
+			<prop name="selectByPrimaryKey" value="get" enable="true"/>
+			<prop name="updateByPrimaryKeySelective" value="update" enable="true"/>
+		    <prop name="listByCondition" value="list" enable="true"/>
+		</plugin>
 		
 		
 		
@@ -54,14 +62,20 @@
 	
 			<pack name="voPack" value="vo" type="api"/>
 
-			<prop name="voSuffix" value="VO" enable="false"/>
+			<prop name="voSuffix" value="VO" enable="true"/>
+			
+			<path name="queryProject" value="src\main\java" type="api"/>
+	
+			<pack name="queryPack" value="query" type="api"/>
+
+			<prop name="querySuffix" value="Query" enable="true"/>
 			
 			
 			<prop name="generatorPo" value="true"/>
 			
-			<prop name="generatorMapper" value="false"/>
+			<prop name="generatorMapper" value="true"/>
 			
-			<prop name="generatorXml" value="false"/>
+			<prop name="generatorXml" value="true"/>
 			
 			
 			<prop name="mapper" value="com.muyuan.platform.common.ext.mybatis.additional.MyBaseMapper"/>
@@ -71,6 +85,8 @@
 			<prop name="id" value="javax.persistence.Id"/>
 			
 			<prop name="column" value="javax.persistence.Column"/>
+			
+			<prop name="example" value="tk.mybatis.mapper.entity.Example" />
 			
 			<prop name="authentication" value="com.muyuan.platform.common.annotation.Authentication" />
 			
@@ -84,7 +100,7 @@
 		
 		
 		
-		 <!-- 
+			 <!-- 
 			servcie生成插件
 				5.serviceImplProject：	 实现类所在模块
 				6.serviceImplPack：	     实现类所在包
@@ -102,6 +118,7 @@
 	        <prop name="enableLogger" value="false"/>
 	
 		</plugin>
+		
 		
 		
 		
@@ -145,7 +162,7 @@
 					
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.106.11.37:3306/my_feed_scheduling?characterEncoding=utf8&amp;useInformationSchema=true&amp;useSSL=false" userId="root"
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.106.11.37:3306/my_test?characterEncoding=utf8&amp;useInformationSchema=true&amp;useSSL=false" userId="root"
                         password="111111">
         </jdbcConnection>
         <javaTypeResolver>
@@ -165,12 +182,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
      
-	 
-		<table tableName="my_base_medicine_station" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_entry" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_pipeline_parent" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_pipeline" domainObjectName="" enableService="false" enableController="false"/>
-		<table tableName="my_base_medicine_temporary_storage" domainObjectName="" enableService="false" enableController="false"/>
+		<table tableName="user" domainObjectName="" enableService="true" enableController="true"/>
 		
     </context>
 </generatorConfiguration>

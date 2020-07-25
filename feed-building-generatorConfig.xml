@@ -35,6 +35,15 @@
             <property name="hasLombok" value="true"/>
         </plugin>
 
+
+
+
+        <plugin type="org.mybatis.generator.plugins.BaseMethodPlugin">		
+			<prop name="insertSelective" value="add" enable="true"/>
+			<prop name="selectByPrimaryKey" value="get" enable="true"/>
+			<prop name="updateByPrimaryKeySelective" value="update" enable="true"/>
+		    <prop name="listByCondition" value="list" enable="true"/>
+		</plugin>
 		
 		
 		
@@ -71,6 +80,8 @@
 			<prop name="id" value="javax.persistence.Id"/>
 			
 			<prop name="column" value="javax.persistence.Column"/>
+			
+			<prop name="example" value="tk.mybatis.mapper.entity.Example" />
 			
 			<prop name="authentication" value="com.muyuan.platform.common.annotation.Authentication" />
 			
