@@ -34,16 +34,6 @@
 		 <plugin type="org.mybatis.generator.plugins.LombokPlugin" >
             <property name="hasLombok" value="true"/>
         </plugin>
-
-
-
-
-        <plugin type="org.mybatis.generator.plugins.BaseMethodPlugin">		
-			<prop name="insertSelective" value="add" enable="true"/>
-			<prop name="selectByPrimaryKey" value="get" enable="true"/>
-			<prop name="updateByPrimaryKeySelective" value="update" enable="true"/>
-		    <prop name="listByCondition" value="list" enable="true"/>
-		</plugin>
 		
 		
 		
@@ -111,6 +101,16 @@
 			<pack name="serviceImplPack" value="biz" type="core"/>
 
 	        <prop name="enableLogger" value="false"/>
+			
+			<prop name="isOverride" value="true"/>
+			
+			<method name="get" value="get"/>
+			
+			<method name="save" value="save"/>
+			
+			<method name="update" value="update"/>
+			
+			<method name="list" value="list"/>
 	
 		</plugin>
 		
@@ -127,6 +127,8 @@
 				4.responseMethod	            Result类方法
 				5.baseController:	            要继承的基础controller
 				6.enableLogger                  是否生成logger日志
+				7.isOverride                    是否重载BaseController方法
+				8.method :           name，方法键值名;  value,方法名值   mapping 映射名
 		--> 
 		<plugin type="org.mybatis.generator.plugins.ControllerPlugin">
 		
@@ -141,6 +143,16 @@
 			<prop name="baseController" value="com.muyuan.platform.common.rest.BaseController"/>
 			
 			<prop name="enableLogger" value="false"/>
+			
+			<prop name="isOverride" value="true"/>
+			
+			<method name="get" value="get"  mapping ="info"/>
+			
+			<method name="save" value="save" mapping ="add"/>
+			
+			<method name="update" value="update" mapping ="update"/>
+			
+			<method name="list" value="list" mapping ="list"/>
 			
 		</plugin>
 		

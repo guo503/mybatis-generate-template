@@ -4,8 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 <generatorConfiguration>
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
-	<!--<classPathEntry location="D:\project\muyuan\mybatis-generate-template\mysql-connector-java-5.1.46.jar"/>-->
-	<classPathEntry location="mysql-connector-java-5.1.46.jar"/>
+	<classPathEntry location="mssql-jdbc-6.1.0.jre7.jar"/>
 	
     <context id="Mysql" targetRuntime="MyBatis3">
 	    
@@ -15,16 +14,16 @@
         <property name="javaFileEncoding" value="UTF-8"/>		
 		
 		    <!--基础服务项目路径前缀-->
-        <property name="core_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-feed-scheduling"/>
+        <property name="core_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-product-integrate"/>
 		
 			<!--基础服务包路径前缀-->
-        <property name="core_package_prefix" value="com.muyuan.platform.feed.scheduling"/>
+        <property name="core_package_prefix" value="com.muyuan.platform.product.integrate"/>
 		
 	    <!--api项目路径前缀-->
-        <property name="api_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-feed-scheduling"/>
+        <property name="api_project_prefix" value="D:\project\muyuan\backend\my-sc-parent\my-sc-product-integrate"/>
 		
 	    <!--api包路径前缀-->
-        <property name="api_package_prefix" value="com.muyuan.platform.feed.scheduling"/>
+        <property name="api_package_prefix" value="com.muyuan.platform.product.integrate"/>
 		
 		
 		 <!-- 配置pojo的序列化 -->
@@ -33,15 +32,6 @@
 		 <plugin type="org.mybatis.generator.plugins.LombokPlugin" >
             <property name="hasLombok" value="true"/>
         </plugin>
-
-
-
-         <plugin type="org.mybatis.generator.plugins.BaseMethodPlugin">		
-			<prop name="insertSelective" value="add" enable="true"/>
-			<prop name="selectByPrimaryKey" value="get" enable="true"/>
-			<prop name="updateByPrimaryKeySelective" value="update" enable="true"/>
-		    <prop name="listByCondition" value="list" enable="true"/>
-		</plugin>
 		
 		
 		
@@ -90,11 +80,11 @@
 			
 			<prop name="authentication" value="com.muyuan.platform.common.annotation.Authentication" />
 			
-			<prop name="appCode" value="com.muyuan.platform.common.constant.CommonConstants.APP_CODE_FEED_SCHEDULING" />
+			<prop name="appCode" value="" />
 			
-		    <prop name="fieldName" value="fieldId" />
+		    <prop name="fieldName" value="" />
 			
-			<prop name="statusType" value="com.muyuan.platform.common.enums.RecordStatus" />
+			<prop name="statusType" value="" />
 			
 		</plugin>
 		
@@ -130,7 +120,7 @@
 		</plugin>
 		
 		
-
+		
 		
 		
 		
@@ -159,7 +149,7 @@
 			
 			<prop name="enableLogger" value="false"/>
 			
-			<prop name="isOverride" value="false"/>
+			<prop name="isOverride" value="true"/>
 			
 			<method name="get" value="get"  mapping ="info"/>
 			
@@ -168,8 +158,6 @@
 			<method name="update" value="update" mapping ="update"/>
 			
 			<method name="list" value="list" mapping ="list"/>
-			
-			
 			
 		</plugin>
 		
@@ -186,8 +174,8 @@
 					
         </commentGenerator>
         <!--数据库链接URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://10.106.11.37:3306/my_test?characterEncoding=utf8&amp;useInformationSchema=true&amp;useSSL=false" userId="root"
-                        password="111111">
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:sqlserver://10.106.7.34:1433;databaseName=scgl20190302" userId="test"
+                        password="test">
         </jdbcConnection>
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
@@ -206,7 +194,7 @@
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
      
-		<table tableName="user" domainObjectName="" enableService="true" enableController="true"/>
+		<table tableName="MY_DrugMessage" domainObjectName="" enableService="true" enableController="true"/>
 		
     </context>
 </generatorConfiguration>
